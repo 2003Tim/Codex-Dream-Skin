@@ -422,6 +422,11 @@ export async function runRendererRuntimeTest(assetRoot) {
   );
   assert.match(
     css,
+    /main:is\(\.main-surface, \[data-app-shell-main-surface\], \[class\*="_MainContentSurface_"\]\):has\(\[role="main"\]\)[\s\S]{0,260}\[data-vscode-context\]\[tabindex="0"\]:has\(\[role="main"\]\):focus-visible\s*\{[^}]*outline:\s*none\s*!important;/,
+    "The non-interactive Home route focus container must not draw a window-sized native focus outline.",
+  );
+  assert.match(
+    css,
     /:not\(:has\(main:is\(\.main-surface, \[data-app-shell-main-surface\], \[class\*=\"_MainContentSurface_\"\]\)\)\)[\s\S]{0,120}\[data-ds-part="sidebar"\]/,
     "Core CSS must style the validated generic sidebar when the exact shell selector is absent.",
   );
